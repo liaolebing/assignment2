@@ -1,1 +1,1 @@
-# assignment2
+# dgpt4711-lab6
