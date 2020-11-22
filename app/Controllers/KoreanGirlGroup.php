@@ -19,34 +19,34 @@ class KoreanGirlGroup  extends BaseController
     
      foreach ($records as $record) 
     {
-        $nameLink = anchor(KoreanGirlGroupshowme$record-id ,"details");
+        $nameLink = anchor("KoreanGirlGroup/showme/$record-id" ,"details");
         $table-addRow($nameLink,$record-description);
     }
     
     $template = [
-                'table_open' = 'table cellpadding=5px',
-                'cell_start' = 'td style=border 1px solid #dddddd;',
-                'row_alt_start' = 'tr style=background-color#dddddd',
+                'table_open' =>'<table cellpadding="5px">',
+                'cell_start' => 'td style=border 1px solid #dddddd;',
+                'row_alt_start' => 'tr style=background-color#dddddd',
                 ];
     $table-setTemplate($template);
     
    $fields = [
-       'title' = 'Travel Destinations',
-       'heading' = 'Travel Destinations',
-       'footer' = 'lyx'];
+       'title' => 'KoreanGirlGroup',
+       'heading' => 'KoreanGirlGroup',
+       'footer' => 'lyx'];
    return $parser-setData($fields)-render('templatestop') .
            $table-generate().
            $parser-setData($fields)-render('templatesbottom');
     }
     public function showme($id)
     {
-         connect to the model
+         //connect to the model
       $member = new AppModelsmember();
-         retrieve all the records
+        // retrieve all the records
       $record = $member-find($id);
-       get a template parser
+       //get a template parser
       $parser = ConfigServicesparser();
-       tell it about the substitions
+      // tell it about the substitions
       $table = new CodeIgniterViewTable();
     
     $headings = $member-fields;
@@ -54,22 +54,22 @@ class KoreanGirlGroup  extends BaseController
           -addRow($headings[1],$record['name'])
           -addRow($headings[2],$record['country'])
           -addRow($headings[3],$record['favorite food'])
-          -addRow($headings[4],img src=image.$record['image'].)
+          -addRow($headings[4],"<img src=\"/image/".$record['image']."\"/>");
           -addRow($headings[5],$record['hobby'])
           -addRow($headings[6],$record['Favorite color'])
           -addRow($headings[7],$record['company']);
 
     $template = [
-                'table_open' = 'table cellpadding=5px',
-                'cell_start' = 'td style=border 1px solid #dddddd;',
-                'row_alt_start' = 'tr style=background-color#dddddd',
+                'table_open' => 'table cellpadding=5px',
+                'cell_start' => 'td style=border 1px solid #dddddd;',
+                'row_alt_start' => 'tr style=background-color#dddddd',
                 ];
     $table-setTemplate($template);
     
    $fields = [
-       'title' = 'Travel Destinations',
-       'heading' = 'Travel Destinations',
-       'footer' = 'yingxianLiao'
+       'title' => 'KoreanGirlGroup',
+       'heading' => 'KoreanGirlGroup',
+       'footer' => 'yingxianLiao'
        ];
       
      return $parser-setData($fields)-render('templatestop') .
